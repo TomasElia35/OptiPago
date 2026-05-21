@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const optimizadorRoutes = require('./src/interfaces/routes/optimizadorRoutes');
+const ingestorRoutes = require('./src/interfaces/routes/ingestorRoutes');
 const { getPool } = require('./src/infrastructure/database/mssqlClient');
 
 const app = express();
@@ -18,6 +19,7 @@ getPool().catch(err => {
 
 // Routes
 app.use('/api/optimizador', optimizadorRoutes);
+app.use('/api/ingestor', ingestorRoutes);
 
 app.listen(port, () => {
   console.log(`OptiPago Backend running on port ${port}`);
